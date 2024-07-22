@@ -1,0 +1,12 @@
+bandit
+flake8
+pylint
+
+# integration requirements
+requests
+
+# testing requirements
+homeassistant
+pytest
+pytest-asyncio
+pytest-homeassistant-custom-component

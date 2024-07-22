@@ -26,3 +26,21 @@ jobs:
 
       - name: Hassfest validation
         uses: "home-assistant/actions/hassfest@master"
+
+  test:
+    runs-on: "ubuntu-latest"
+    name: PyTest
+    steps:
+      - name: Check out the repository
+        uses: "actions/checkout@v3"
+
+      - name: Setup Python
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: "pip install -r requirements.txt"
+
+      - name: Run tests
+        run: "pytest --doctest-modules --junitxml=junit/test-results.xml --cov=custom_components --cov-report=xml --cov-report=html tests"
